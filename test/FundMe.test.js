@@ -59,21 +59,32 @@ describe("FundMe", function () {
 
     describe("withdraw ", async function () {
         beforeEach(async function () {
-            await fundMe.fund({value: sendValue * 3})
+            await fundMe.fund({value: sendValue})
         })
 
         it('withdraw ETH for a single founder', async function () {
             // get contract address balance
             const startingFundMeBalance = await fundMe.provider.getBalance(fundMe.address)
+            console.log(" current balance in contract is ", ethers.utils.formatEther(startingFundMeBalance))
             const startingDeployerBalance = await fundMe.provider.getBalance(deployer)
+            console.log(" current deployer balance is ", ethers.utils.formatEther(startingDeployerBalance))
 
             // Act withdraw Balance
-
             const txResponse = await fundMe.withdraw()
             const txReceipt = await txResponse.wait(1)
+            const {gasUsed, effectiveGasPrice} = txReceipt
+            const gasCost = gasUsed.mul(effectiveGasPrice)
+            console.log(txReceipt.toString())
 
+            // or ethers.provider.getBalance( )
             const endingFundMeBalance = await fundMe.provider.getBalance(fundMe.address)
+            const endingDeployerBalance = await fundMe.provider.getBalance(deployer)
+            console.log(" current balance in contract is ", ethers.utils.formatEther(endingFundMeBalance))
+            console.log(" current deployer balance is ", ethers.utils.formatEther(endingDeployerBalance))
 
+
+            assert.equal(endingFundMeBalance, 0)
+            assert.equal(startingFundMeBalance.add(startingDeployerBalance).toString(), endingDeployerBalance.add(gasCost).toString())
         });
 
     })

@@ -12,4 +12,6 @@ by learning
        *  `yarn hardhat test --network hardhat`
        *  `yarn hardhat test --grep "amount funded"`  grep some unit test which we defined
        *  `yarn hardhat coverage`  get Test Coverage Info
-    3. 
+
+      
+4. JS Debugger (open a debugger [Run and Debug], and then check debug infos)
