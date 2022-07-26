@@ -34,3 +34,5 @@ module.exports = async ({getNamedAccounts, deployments}) => {
 
 
 }
+// TODO Most important
+module.exports.tags = ["all", "mocks"]
