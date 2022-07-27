@@ -2,10 +2,10 @@
 pragma solidity ^0.8.0;
 
 contract FunWithStorage {
-    uint private favoriteNumber; //storage slot 0
+    uint256 private favoriteNumber; //storage slot 0
     bool private someBool; // slot 1
-    uint256[] myArray;      // slot 2 keccak256(2)
-    mapping(uint256 => bool ) myMap;    // slot 3 keccak256(h(k) . p)
+    uint256[] myArray; // slot 2 keccak256(2)
+    mapping(uint256 => bool) myMap; // slot 3 keccak256(h(k) . p)
 
     //    p: The storage slot (aka, 3)
     // k: The key in hex
@@ -27,5 +27,4 @@ contract FunWithStorage {
         bool otherVar = someBool; // SLOAD
         // ^^ memory variables
     }
-
 }

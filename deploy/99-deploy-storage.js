@@ -1,13 +1,12 @@
-const {getNamedAccounts, deployments, network, ethers} = require("hardhat")
-const {networkConfig, developmentChains} = require("../helper-hardhat-config")
+const { getNamedAccounts, deployments, network, ethers } = require("hardhat")
+const { networkConfig, developmentChains } = require("../helper-hardhat-config")
 
-
-module.exports = async ({getNamedAccounts, deployments}) => {
-    const {deploy, log} = deployments
+module.exports = async ({ getNamedAccounts, deployments }) => {
+    const { deploy, log } = deployments
 
     // Must add  {} to get Named Accounts
     // const deployer = await getNamedAccounts()
-    const {deployer} = await getNamedAccounts()
+    const { deployer } = await getNamedAccounts()
 
     console.log("-------------------------------------")
     console.log(" deploy contract and with for confirmations ")
@@ -23,10 +22,12 @@ module.exports = async ({getNamedAccounts, deployments}) => {
     console.log(" Logging Storage ....  ")
     for (let i = 0; i < 10; i++) {
         log(
-            `Location ${i}: ${await ethers.provider.getStorageAt(funWithStorage.address, i)}`)
+            `Location ${i}: ${await ethers.provider.getStorageAt(
+                funWithStorage.address,
+                i
+            )}`
+        )
     }
-
-
 }
 
 module.exports.tags = ["storage"]

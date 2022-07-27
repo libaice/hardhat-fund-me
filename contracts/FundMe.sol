@@ -6,8 +6,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import "./PriceConverter.sol";
 
 // 3. Interfaces, Libraries, Contracts
-    error FundMe__NotOwner();
-
+error FundMe__NotOwner();
 
 contract FundMe {
     // Type Declarations
@@ -93,9 +92,9 @@ contract FundMe {
      *  @return the amount funded
      */
     function getAddressToAmountFunded(address fundingAddress)
-    public
-    view
-    returns (uint256)
+        public
+        view
+        returns (uint256)
     {
         return s_addressToAmountFunded[fundingAddress];
     }

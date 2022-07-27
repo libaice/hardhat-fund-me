@@ -1,11 +1,11 @@
-const {getNamedAccounts, deployments, network} = require("hardhat")
-const {networkConfig, developmentChains} = require("../helper-hardhat-config")
+const { getNamedAccounts, deployments, network } = require("hardhat")
+const { networkConfig, developmentChains } = require("../helper-hardhat-config")
 
-const {verify} = require('../utils/vertify')
+const { verify } = require("../utils/vertify")
 
-module.exports = async ({getNamedAccounts, deployments}) => {
-    const {deploy, log} = deployments
-    const {deployer} = await getNamedAccounts()
+module.exports = async ({ getNamedAccounts, deployments }) => {
+    const { deploy, log } = deployments
+    const { deployer } = await getNamedAccounts()
     const chainId = network.config.chainId
 
     let ethUsdPriceFeedAddress
@@ -17,7 +17,7 @@ module.exports = async ({getNamedAccounts, deployments}) => {
     }
     log("----------------------------------------------------")
     log("Deploying FundMe and waiting for confirmations...")
-    const args = [ethUsdPriceFeedAddress];
+    const args = [ethUsdPriceFeedAddress]
     const fundMe = await deploy("FundMe", {
         from: deployer,
         args: args,
@@ -31,8 +31,6 @@ module.exports = async ({getNamedAccounts, deployments}) => {
         // verify contract
         await verify(fundMe.address, args)
     }
-
-
 }
 // TODO Most important
 module.exports.tags = ["all", "mocks"]
