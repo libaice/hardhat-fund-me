@@ -22,6 +22,7 @@ const PRIVATE_KEY =
     "0x11ee3108a03081fe260ecdc106554d09d9d1209bcafd46942b10e02943effc4a"
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
 
+
 module.exports = {
     defaultNetwork: "hardhat",
     networks: {
@@ -62,6 +63,7 @@ module.exports = {
         outputFile: "gas-report.txt",
         noColors: true,
         // coinmarketcap: COINMARKETCAP_API_KEY,
+        token: "MATIC"
     },
     namedAccounts: {
         deployer: {
