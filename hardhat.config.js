@@ -16,6 +16,8 @@ const KOVAN_RPC_URL =
     "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
 const RINKEBY_RPC_URL =
     "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
+const GOERLI_RPC_URL = 'https://goerli.infura.io/v3/' + process.env.RPC_URL
+
 const PRIVATE_KEY =
     process.env.PRIVATE_KEY
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
@@ -40,6 +42,12 @@ module.exports = {
             chainId: 4,
             blockConfirmations: 6,
         },
+        goerli: {
+            url: GOERLI_RPC_URL,
+            accounts: [PRIVATE_KEY],
+            chainId: 5,
+            blockConfirmations: 3
+        }
     },
     solidity: {
         compilers: [
